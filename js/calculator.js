@@ -2,6 +2,7 @@ var calculatorModule = function(){
     var memory = 0;
     var total = 0;
     var calculator = {};
+    var error = 'ERROR'
 
     var load = function(x){
         if (typeof x === 'number'){
