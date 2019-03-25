@@ -11,8 +11,11 @@ for (var i = 0;i<numButts.length;i++){
 }
 function newDisp(){
     var toNum = Number(this.innerHTML)
-    display.innerHTML += calculatorModule().load(toNum)
-    console.log(this.innerHTML)
+    if(display.innerHTML === '0'){
+        display.innerHTML = calculatorModule().load(toNum);
+    } else {
+        display.innerHTML += calculatorModule().load(toNum);
+    }
 }
 //add eventlistener to operators
 for(var i = 0; i<opButts.length;i++){
