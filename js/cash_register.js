@@ -9,8 +9,8 @@ var dispNum = Number(display.innerHTML); //displayed str to number
 
 //set display to total
 
-display.innerHTML = 0;
-// console.log(typeof display.innerHTML) *string*
+display.innerHTML = calcMod.getTotal();
+// console.log(typeof display.innerHTML);
 
 //add eventlistener to numbers
 
@@ -25,14 +25,13 @@ function newDisp(){
         display.innerHTML += calcMod.load(toNum);
     }
 }
-
 //add eventlistener to operators to calculate
 
 var addition = opButts[0];
 addition.addEventListener('click',toCalcAdd)
 function toCalcAdd(){
     calcMod.add(dispNum);
-    console.log(calcMod.add(dispNum))
+    console.log(calcMod.getTotal())
     display.innerHTML = 0;
 }
 
@@ -51,6 +50,10 @@ function toCalcMult(){
 }
 
 var clear = opButts[3];
+clear.addEventListener('click',clearDisp)
+function clearDisp(){
+    display.innerHTML = 0;
+}
 
 var equals = opButts[4];
 equals.addEventListener('click',giveSol)
@@ -77,3 +80,4 @@ function toCalcDiv(){
 // function incOp(){
 //     display.innerHTML += this.innerHTML
 // }
+
