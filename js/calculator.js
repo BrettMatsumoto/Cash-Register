@@ -17,7 +17,7 @@ var calculatorModule = function(){
     }
     var add = function(x){
         if (typeof x === 'number'){
-            total += x;
+            return total += x;
         } else {
             throw error
         }
