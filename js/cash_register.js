@@ -1,14 +1,10 @@
+//declare variables
+var myCalc = calculatorModule();
 var display = document.getElementById('display')
-display.innerHTML;
+var buttons = document.getElementsByClassName('buttons');
+//set display to total
+display.innerHTML = myCalc.getTotal();
 
-//add event listener to number buttons
-
-var numButts = document.getElementsByClassName('numbers');
-for (var i = 0; i < numButts.length;i++){
-    numButts[i].addEventListener('click', newDisp)
-    console.log(numButts[i])
-}
-function newDisp(){
-    console.log(this.numButts.value)
-    display.innerHTML =+ this.numButts.innerHTML
+for(var i=0;i<buttons.length;i++){
+    buttons[i].addEventListener('click', myCalc)
 }
