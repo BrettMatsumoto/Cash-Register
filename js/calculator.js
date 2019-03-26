@@ -2,12 +2,11 @@ var calculatorModule = function(){
     var memory = 0;
     var total = 0;
     var calculator = {};
-    var error = 'ERROR'
-
+    var error = 'Error!@#'
     var load = function(x){
         if (typeof x === 'number'){
-            total = x;
-            return total
+            memory = x;
+            return memory
         } else {
             throw error
         }
@@ -17,7 +16,7 @@ var calculatorModule = function(){
     }
     var add = function(x){
         if (typeof x === 'number'){
-            return total += x;
+            total += x;
         } else {
             throw error
         }
@@ -46,9 +45,9 @@ var calculatorModule = function(){
     var recallMemory = function(){
         return memory
     }
-    var saveMemory =  function(){
+    var saveMemory =  function(x){
         memory = total;
-        return memory;
+        return total;
     }
     var clearMemory = function(){
         memory = 0;
