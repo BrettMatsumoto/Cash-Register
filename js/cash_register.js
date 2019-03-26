@@ -1,83 +1,79 @@
-
-//declare variables
-
-var display = document.getElementById('display');
-var numButts = document.getElementsByClassName('numbers');
-var opButts = document.getElementsByClassName('operator');
+// declared variables
 var calcMod = calculatorModule();
-var dispNum = Number(display.innerHTML); //displayed str to number
+var numButts = document.getElementsByClassName('numbers');
+var disp = document.getElementById('display');
+var opButt = document.getElementsByClassName('operator');
+var lastNum;
+var operatorChoice = null;
+var truDisp = disp.innerHTML;
+var clicked = false;
 
-//set display to total
-
-display.innerHTML = calcMod.getTotal();
-// console.log(typeof display.innerHTML);
-
-//add eventlistener to numbers
-
-for (var i = 0;i<numButts.length;i++){
-    numButts[i].addEventListener('click', newDisp)
+// add eventlisteners to number buttons
+for (var i = 0; i < numButts.length; i++){
+    numButts[i].addEventListener('click',setDisp)
 }
-function newDisp(){
-    var toNum = Number(this.innerHTML)
-    if(display.innerHTML === '0'){
-        display.innerHTML = calcMod.load(toNum);
+
+function setDisp(){
+    if (disp.innerHTML.length < 1){
+        disp.innerHTML = this.innerHTML;
+    } else if (clicked == true) {
+        disp.innerHTML = this.innerHTML;
+        clicked = false;
     } else {
-        display.innerHTML += calcMod.load(toNum);
+        disp.innerHTML += this.innerHTML;
     }
 }
-//add eventlistener to operators to calculate
 
-var addition = opButts[0];
-addition.addEventListener('click',toCalcAdd)
-function toCalcAdd(){
-    calcMod.add(dispNum);
-    console.log(calcMod.getTotal())
-    display.innerHTML = 0;
+opButt[0].addEventListener('click',additionOp)
+function additionOp(){
+    lastNum = Number(disp.innerHTML)
+    operatorChoice = '+'
+    clicked = true;
+    console.log(lastNum)
 }
 
-var subtraction = opButts[1];
-subtraction.addEventListener('click',toCalcSub)
-function toCalcSub(){
-    calcMod.subtract(dispNum);
-    display.innerHTML = 0;
+opButt[1].addEventListener('click',subtractionOp)
+function subtractionOp(){
+    lastNum = Number(disp.innerHTML)
+    operatorChoice = '-'
+    clicked = true;
 }
 
-var multiplication = opButts[2];
-multiplication.addEventListener('click',toCalcMult)
-function toCalcMult(){
-    calcMod.multiply(dispNum);
-    display.innerHTML = 0;
+opButt[2].addEventListener('click',multiplyOp)
+function multiplyOp(){
+    lastNum = Number(disp.innerHTML)
+    operatorChoice = '*'
+    clicked = true;
 }
 
-var clear = opButts[3];
-clear.addEventListener('click',clearDisp)
-function clearDisp(){
-    display.innerHTML = 0;
+opButt[5].addEventListener('click',divideOp)
+function divideOp(){
+    lastNum = Number(disp.innerHTML);
+    operatorChoice = '/';
+    clicked = true;
 }
 
-var equals = opButts[4];
-equals.addEventListener('click',giveSol)
-function giveSol(){
-    display.innerHTML = calcMod.getTotal()
-    console.log(display.innerHTML)
+opButt[4].addEventListener('click',getTotal)
+function getTotal(){
+    var res = Number(lastNum) + Number(disp.innerHTML)
+    if (operatorChoice == '+'){
+        disp.innerHTML = res;
+    } else if (operatorChoice == '-'){
+        var res = Number(lastNum) - Number(disp.innerHTML)
+        disp.innerHTML = res;
+    } else if (operatorChoice == '*'){
+        var res = Number(lastNum) * Number(disp.innerHTML)
+        disp.innerHTML = res;
+    } else if (operatorChoice == '/'){
+        var res = Number(lastNum) / Number(disp.innerHTML)
+        disp.innerHTML = res;
+    } else {
+        throw error
+    }
+    operatorChoice = null;
 }
 
-var division = opButts[5];
-division.addEventListener('click',toCalcDiv);
-function toCalcDiv(){
-    calcMod.divide(dispNum);
-    display.innerHTML = 0;
-}
-
-//to use later... maybe
-
-//add eventlistener to operators to display operation
-
-// for(var i = 0; i<opButts.length;i++){
-//     opButts[i].addEventListener('click', incOp)
-//     console.log(opButts[i])
-// }
-// function incOp(){
-//     display.innerHTML += this.innerHTML
-// }
-
+window.setInterval(function(){
+    console.log(typeof disp.innerHTML);
+    console.log(clicked)
+}, 5000)
