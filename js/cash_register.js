@@ -3,6 +3,7 @@ var calcMod = calculatorModule();
 var numButts = document.getElementsByClassName('numbers');
 var disp = document.getElementById('display');
 var opButt = document.getElementsByClassName('operator');
+var specItems = document.getElementsByClassName('items');
 var lastNum;
 var operatorChoice = null;
 var truDisp = disp.innerHTML;
@@ -23,7 +24,23 @@ function setDisp(){
         disp.innerHTML += this.innerHTML;
     }
 }
+// add eventlisteners special menu items
 
+for (var i = 0; i < specItems.length; i++){
+    specItems[i].addEventListener('click', setDisp2)
+}
+
+function setDisp2(){
+    if (disp.innerHTML.length < 1){
+        disp.innerHTML = this.value
+    } else if (clicked == true){
+        disp.innerHTML = this.value
+    } else {
+        disp.innerHTML += this.value
+    }
+}
+
+// add eventlisteners to operator buttons
 opButt[0].addEventListener('click',additionOp)
 function additionOp(){
     lastNum = Number(disp.innerHTML)
