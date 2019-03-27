@@ -1,3 +1,30 @@
 #display{
     border: 1px solid black;
 }
+#buttons{
+    display: flex;
+}
+#menuItems{
+    border: 1px solid black;
+}
+#createYourPlate{
+    border: 1px solid black;
+}
+#bowl{
+    border: 1px solid black;
+}
+#kidsMenu{
+    border: 1px solid black;
+}
+#familyFeast{
+    border: 1px solid black;
+}
+#alaCarte{
+    border: 1px solid black;
+}
+#appatizers{
+    border: 1px solid black;
+}
+#drinks{
+    border: 1px solid black;
+}
