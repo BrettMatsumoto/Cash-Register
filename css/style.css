@@ -52,3 +52,14 @@ body{
 #drinks{
     border: 1px solid black;
 }
+@media only screen and (max-width: 700px){
+    body{
+        background-image: none;
+    }
+}
+@media only screen and (max-width: 900px){
+    body{
+        background-image: url("https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/59/68/fb/5968fbd2-106a-f913-0b1d-7ea424314dc3/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-5.png/246x0w.jpg");
+        background-repeat: no-repeat;
+    }
+}
