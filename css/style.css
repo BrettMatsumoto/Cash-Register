@@ -3,9 +3,12 @@
 }
 #buttons{
     display: flex;
+    flex-flow: column;
 }
 #menuItems{
     border: 1px solid black;
+    display: flex;
+    flex-flow: column;
 }
 #createYourPlate{
     border: 1px solid black;
